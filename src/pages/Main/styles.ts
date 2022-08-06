@@ -15,7 +15,7 @@ const styles = {
   },
   button: {
     maxWidth: '200px',
-    height: '50px',
+    height: 'auto',
     minWidth: '35vw',
     fontSize: '20px'
   }

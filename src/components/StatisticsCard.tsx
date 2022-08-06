@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Card, Typography, Box, IconButton, Divider,
+  Card, Typography, Box, IconButton, Divider, Tooltip,
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -58,24 +58,31 @@ export default function StatisticsCard() {
     return category;
   }
 
+  function checkCategoryStep(step: number, direction: 'prev' | 'next') {
+    if (step === 1 && direction === 'prev') return true;
+    if (step === 4 && direction === 'next') return true;
+
+    return false;
+  }
+
   return (
     <Box sx={styles.box}>
-      {categoryStep !== 1 ? (
-        <IconButton aria-label="previous" onClick={() => setCategoryStep(categoryStep - 1)}>
-          <ArrowBackIcon fontSize="large" />
-        </IconButton>
-      ) : <></>}
+        <Tooltip title="Categoria Anterior">
+          <IconButton aria-label="previous" onClick={() => setCategoryStep(categoryStep - 1)} disabled={checkCategoryStep(categoryStep, 'prev')}>
+            <ArrowBackIcon fontSize="large"/>
+          </IconButton>
+        </Tooltip>
       <Card sx={styles.card}>
         <Typography variant="h5" color="" sx={styles.title}>{recognizeCategory(categoryStep).toUpperCase()}</Typography>
-        <Divider width="80%" />
+        <Divider style={{ width: '80%' }} />
         <Typography variant="h6" color="#5faa50" fontSize="22px" sx={styles.title}>4000</Typography>
         <Typography variant="h6" fontSize="20px" fontWeight="400">doações feitas</Typography>
       </Card>
-      {categoryStep === 4 ? <></> : (
-        <IconButton aria-label="next" onClick={() => setCategoryStep(categoryStep + 1)}>
-          <ArrowForwardIcon fontSize="large" />
-        </IconButton>
-      )}
+        <Tooltip title="Próxima Categoria">
+          <IconButton aria-label="next" onClick={() => setCategoryStep(categoryStep + 1)} disabled={checkCategoryStep(categoryStep, 'next')}>
+            <ArrowForwardIcon fontSize="large" />
+          </IconButton>
+        </Tooltip>
     </Box>
   );
 }

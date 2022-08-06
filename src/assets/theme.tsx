@@ -1,10 +1,10 @@
 import { createTheme } from '@mui/material/styles';
-import { yellow, orange } from '@mui/material/colors';
+import { orange } from '@mui/material/colors';
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: yellow[800],
+      main: orange[700],
       contrastText: '#fff',
     },
     secondary: {
@@ -16,9 +16,9 @@ const theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          backgroundColor: '#FFF',
+          backgroundColor: '#001',
           backgroundImage: 'linear-gradient(180deg, rgba(228,226,15,0.7567226719789478) 34%, rgba(255,255,255,0.8463585263206845) 87%)',
-          backgroundAttachment: 'fixed',
+          backgroundAttachment: 'fixed'
         },
       },
     },
