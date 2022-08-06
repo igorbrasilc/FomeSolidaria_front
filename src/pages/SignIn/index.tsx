@@ -35,22 +35,24 @@ function SignIn() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
+  const [loading, setLoading] = useState(false);
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setMessage(null);
-
+    setLoading(true);
     if (!formData?.username || !formData?.password) {
       setMessage({ type: 'error', text: 'Todos os campos são obrigatórios!' });
+      setLoading(false);
       return;
     }
-
     const { username, password } = formData;
-
     try {
       const {
         data: { token },
       } = await api.signIn({ username, password });
       signIn(token);
+      setLoading(false);
       setMessage({ type: 'success', text: 'Login concluído!' });
       navigate('/main');
     } catch (error: Error | AxiosError | any) {
@@ -59,6 +61,7 @@ function SignIn() {
           type: 'error',
           text: error.response.data,
         });
+        setLoading(false);
         return;
       }
 
@@ -90,6 +93,7 @@ function SignIn() {
           variant="outlined"
           onChange={handleInputChange}
           value={formData.username}
+          disabled={loading}
         />
         <PasswordInput
           name="password"
@@ -97,9 +101,10 @@ function SignIn() {
           label="Senha"
           onChange={handleInputChange}
           value={formData.password}
+          disabled={loading}
         />
         <Box sx={styles.actionsContainer}>
-          <Button variant="contained" type="submit" size="large" sx={styles.button}>
+          <Button variant="contained" type="submit" size="large" sx={styles.button} disabled={loading}>
             Entrar
           </Button>
           <Link component={RouterLink} to="/app">

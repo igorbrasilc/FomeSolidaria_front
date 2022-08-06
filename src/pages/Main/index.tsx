@@ -1,9 +1,10 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
 import SideBar from '../../components/SideBar';
 import StatisticsCard from '../../components/StatisticsCard';
+import SearchBar from '../../components/SearchBar';
 
 import styles from './styles';
 import useAuth from '../../hooks/useAuth';
@@ -31,6 +32,8 @@ export default function Main() {
           {`OLÁ ${decodedToken?.name.toUpperCase()}!`}
         </Typography>
         <StatisticsCard />
+        <SearchBar />
+        <Button variant="contained" sx={styles.button}>NOVO CADASTRO</Button>
       </Box>
     </Box>
   );

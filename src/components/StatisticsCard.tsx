@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Card, Typography, Box, IconButton, Divider
+  Card, Typography, Box, IconButton, Divider,
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -24,7 +24,7 @@ const styles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     gap: '15px',
-  }
+  },
 };
 
 type Categories = 'Cesta P' | 'Cesta G' | 'Leite' | 'Móvel' | 'Roupa' | 'Outros' | '';
@@ -32,9 +32,9 @@ type Categories = 'Cesta P' | 'Cesta G' | 'Leite' | 'Móvel' | 'Roupa' | 'Outros
 export default function StatisticsCard() {
   const [categoryStep, setCategoryStep] = React.useState(1);
 
-//   React.useEffect(() => {
+  //   React.useEffect(() => {
 
-//   }, [categoryStep]);
+  //   }, [categoryStep]);
 
   function recognizeCategory(step: number) {
     let category: Categories = '';
