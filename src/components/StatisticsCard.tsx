@@ -1,13 +1,13 @@
 import React from 'react';
 import {
-  Card, Typography, Box, IconButton,
+  Card, Typography, Box, IconButton, Divider
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const styles = {
   title: {
-    padding: '15px',
+    paddingTop: '15px',
   },
   card: {
     display: 'flex',
@@ -66,9 +66,10 @@ export default function StatisticsCard() {
         </IconButton>
       ) : <></>}
       <Card sx={styles.card}>
-        <Typography variant="h5" component="text" sx={styles.title}>DOAÇÕES</Typography>
-        <Typography variant="h5" color="">{recognizeCategory(categoryStep)}</Typography>
-        <Typography variant="h6" color="#5faa50">4000</Typography>
+        <Typography variant="h5" color="" sx={styles.title}>{recognizeCategory(categoryStep).toUpperCase()}</Typography>
+        <Divider width="80%" />
+        <Typography variant="h6" color="#5faa50" fontSize="22px" sx={styles.title}>4000</Typography>
+        <Typography variant="h6" fontSize="20px" fontWeight="400">doações feitas</Typography>
       </Card>
       {categoryStep === 4 ? <></> : (
         <IconButton aria-label="next" onClick={() => setCategoryStep(categoryStep + 1)}>
