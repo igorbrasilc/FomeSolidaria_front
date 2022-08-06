@@ -22,6 +22,7 @@
     "rules": {
         "react/jsx-filename-extension": "off",
         "import/no-unresolved": "warn",
-        "import/extensions": "warn"
+        "import/extensions": "warn",
+        "linebreak-style": "off"
     }
 }
