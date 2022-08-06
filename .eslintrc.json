@@ -23,6 +23,7 @@
         "react/jsx-filename-extension": "off",
         "import/no-unresolved": "warn",
         "import/extensions": "warn",
-        "linebreak-style": "off"
+        "linebreak-style": "off",
+        "react/jsx-no-useless-fragment": "off"
     }
 }

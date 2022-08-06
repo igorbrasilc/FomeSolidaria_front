@@ -9,40 +9,13 @@ import {
 import { AxiosError } from 'axios';
 import React, { useState } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import Logo from '../assets/logo-provisoria.jpg';
-import Form from '../components/Form';
-import PasswordInput from '../components/PasswordInput';
-import useAlert from '../hooks/useAlert';
-import useAuth from '../hooks/useAuth';
-import api from '../services/api';
-import theme from '../assets/theme';
-
-const styles = {
-  container: {
-    marginTop: '100px',
-    minWidth: '40vw',
-    maxWidth: '500px',
-    display: 'flex',
-    flexDirection: 'column',
-    textAlign: 'center',
-  },
-  title: { marginBottom: '30px' },
-  dividerContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-    marginTop: '16px',
-    marginBottom: '26px',
-  },
-  input: { marginBottom: '16px' },
-  button: { maxWidth: '500px', minWidth: '40vw', marginBottom: '35px' },
-  actionsContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-};
+import Logo from '../../assets/logo-provisoria.jpg';
+import Form from '../../components/Form';
+import PasswordInput from '../../components/PasswordInput';
+import useAlert from '../../hooks/useAlert';
+import useAuth from '../../hooks/useAuth';
+import api from '../../services/api';
+import styles from './styles';
 
   interface FormData {
     username: string;
@@ -77,9 +50,9 @@ function SignIn() {
       const {
         data: { token },
       } = await api.signIn({ username, password });
-      console.log(token);
       signIn(token);
-      navigate('/app');
+      setMessage({ type: 'success', text: 'Login concluído!' });
+      navigate('/main');
     } catch (error: Error | AxiosError | any) {
       if (error.response) {
         setMessage({
