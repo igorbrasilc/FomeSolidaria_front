@@ -15,6 +15,7 @@ import PasswordInput from '../components/PasswordInput';
 import useAlert from '../hooks/useAlert';
 import useAuth from '../hooks/useAuth';
 import api from '../services/api';
+import theme from '../assets/theme';
 
 const styles = {
   container: {
@@ -129,7 +130,7 @@ function SignIn() {
             Entrar
           </Button>
           <Link component={RouterLink} to="/app">
-            <Typography>Conheça mais do projeto</Typography>
+            <Typography color="secondary">Conheça mais do projeto</Typography>
           </Link>
         </Box>
       </Box>

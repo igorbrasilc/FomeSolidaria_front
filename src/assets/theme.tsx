@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles';
-import { yellow } from '@mui/material/colors';
+import { yellow, orange } from '@mui/material/colors';
 
 const theme = createTheme({
   palette: {
@@ -8,9 +8,20 @@ const theme = createTheme({
       contrastText: '#fff',
     },
     secondary: {
-      main: '#001',
+      main: orange[900],
     },
-    background: { default: '#d3d1d1', paper: '#949494' },
+    background: { default: '#ebebeb', paper: '#FFF' },
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          backgroundColor: '#FFF',
+          backgroundImage: 'linear-gradient(180deg, rgba(228,226,15,0.7567226719789478) 34%, rgba(255,255,255,0.8463585263206845) 87%)',
+          backgroundAttachment: 'fixed',
+        },
+      },
+    },
   },
 });
 
