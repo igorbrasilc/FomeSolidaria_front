@@ -16,7 +16,7 @@ const styles = {
   },
   input: {
     marginLeft: '20px',
-    width: '100%',
+    minWidth: '50vw',
   },
   container: {
     display: 'flex',
@@ -24,30 +24,34 @@ const styles = {
     maxWidth: '400px',
     minWidth: '60vw',
     marginTop: '20px',
-    marginBottom: '20px',
   },
 };
 
-export default function SearchBar() {
-  const [inputSearch, setInputSearch] = React.useState('');
-
+export default function SearchBar(
+  { setSearchInput, searchInput } : { setSearchInput: any, searchInput: string},
+) {
   function handleChange(input: string) {
-    setInputSearch(input);
+    setSearchInput(input);
   }
 
   return (
     <Container sx={styles.container}>
       <Box sx={styles.box}>
-        {inputSearch === '' ? <PersonSearchIcon sx={styles.icon} color="primary" /> : (
+        {searchInput === '' ? <PersonSearchIcon sx={styles.icon} color="primary" /> : (
           <Tooltip title="Apagar">
-            <IconButton aria-label="erase" onClick={() => setInputSearch('')}>
+            <IconButton aria-label="erase" onClick={() => setSearchInput('')}>
               <CloseIcon sx={styles.icon} color="primary" />
             </IconButton>
           </Tooltip>
         )}
-        <TextField variant="standard" placeholder="Procure por nome, RG ou CPF" sx={styles.input} value={inputSearch} onChange={(e) => handleChange(e.target.value)} />
+        <TextField
+          variant="standard"
+          placeholder="Procure por nome, RG ou CPF"
+          sx={styles.input}
+          value={searchInput}
+          onChange={(e) => handleChange(e.target.value)}
+        />
       </Box>
-      {inputSearch.length > 3 ? <>Hi</> : <></>}
     </Container>
   );
 }

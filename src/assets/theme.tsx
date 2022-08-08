@@ -18,10 +18,17 @@ const theme = createTheme({
         body: {
           backgroundColor: '#001',
           backgroundImage: 'linear-gradient(180deg, rgba(228,226,15,0.7567226719789478) 34%, rgba(255,255,255,0.8463585263206845) 87%)',
-          backgroundAttachment: 'fixed'
-        },
+          backgroundAttachment: 'fixed',
+        }
       },
     },
+    MuiAvatar: {
+        styleOverrides: {
+            root: {
+                backgroundColor: orange[700]
+            }
+        }
+    }
   },
 });
 

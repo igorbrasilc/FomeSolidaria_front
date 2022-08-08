@@ -5,6 +5,7 @@ import Header from '../../components/Header';
 import SideBar from '../../components/SideBar';
 import StatisticsCard from '../../components/StatisticsCard';
 import SearchBar from '../../components/SearchBar';
+import ResultList from '../../components/ResultList';
 
 import styles from './styles';
 import useAuth from '../../hooks/useAuth';
@@ -12,6 +13,8 @@ import useAlert from '../../hooks/useAlert';
 
 export default function Main() {
   const [openSideBar, setOpenSideBar] = React.useState(false);
+  const [searchInput, setSearchInput] = React.useState('');
+  const [itemsSearched, setItemsSearched] = React.useState([]);
   const navigate = useNavigate();
   const { setMessage } = useAlert();
   const { token, decodeToken } = useAuth();
@@ -32,8 +35,9 @@ export default function Main() {
           {`OLÁ ${decodedToken?.name.toUpperCase()}!`}
         </Typography>
         <StatisticsCard />
-        <SearchBar />
         <Button variant="contained" sx={styles.button}>NOVO CADASTRO</Button>
+        <SearchBar setSearchInput={setSearchInput} searchInput={searchInput} />
+        {searchInput.length < 3 ? <></> : <ResultList itemsSearched={itemsSearched} />}
       </Box>
     </Box>
   );

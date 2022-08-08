@@ -17,7 +17,8 @@ const styles = {
     maxWidth: '200px',
     height: 'auto',
     minWidth: '35vw',
-    fontSize: '20px'
+    fontSize: '20px',
+    marginTop: '20px'
   }
 };
 
