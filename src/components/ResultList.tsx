@@ -59,7 +59,7 @@ export default function ResultList({ searchInput }: { searchInput: string }) {
     if (debouncing.current) {
       clearTimeout(debouncing.current);
     }
-    debouncing.current = setTimeout(() => func(), 500);
+    debouncing.current = setTimeout(() => func(), 1000);
   }, []);
 
   React.useEffect(() => {
@@ -134,7 +134,7 @@ export default function ResultList({ searchInput }: { searchInput: string }) {
 
   return (
     <List sx={styles.box}>
-      {loading ? <CircularProgress size={60}  /> : listItems(itemsSearched)}
+      {loading ? <CircularProgress size={60} /> : listItems(itemsSearched)}
     </List>
   );
 }

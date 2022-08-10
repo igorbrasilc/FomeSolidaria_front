@@ -1,6 +1,17 @@
-import { useRef } from "react";
+import { useCallback, useRef } from 'react';
 
-export default function useDebounce(delay = 500, notDelayInFirstTime = true) {
-    const isFirstTime = useRef(notDelayInFirstTime);
-    const debouncing = useRef()
-}
+const useDebounce = (delay = 300) => {
+  const debouncing = useRef<ReturnType<typeof setTimeout>>();
+
+  const debounce = useCallback((func: () => void) => {
+    if (debouncing.current) {
+      clearTimeout(debouncing.current);
+    }
+
+    debouncing.current = setTimeout(() => func(), delay);
+  }, [delay]);
+
+  return { debounce };
+};
+
+export default useDebounce;

@@ -28,6 +28,13 @@ const theme = createTheme({
                 backgroundColor: orange[700]
             }
         }
+    },
+    MuiListItemText: {
+        styleOverrides: {
+            root: {
+                color: orange[700],
+            }
+        }
     }
   },
 });
