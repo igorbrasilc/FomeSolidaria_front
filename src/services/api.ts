@@ -10,7 +10,7 @@ interface AdminData {
     password: string;
   }
 
-function getConfig(token: string) {
+function getConfig(token: string | null) {
   return {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -22,18 +22,18 @@ async function signIn(signInData: AdminData) {
   return baseAPI.post<{ token: string }>('/sign-in', signInData);
 }
 
-async function getCategoryCount(category: Categories, token: string) {
+async function getCategoryCount(category: Categories, token: string | null) {
   const config = getConfig(token);
   return baseAPI.get<{ categoryCount: number }>(`/categories/${category}`, config);
 }
 
-async function searchInput(input: string, token: string) {
+async function getSearchResults(input: string, token: string | null) {
   const config = getConfig(token);
   return baseAPI.get(`/search?input=${input}`, config);
 }
 
 const api = {
-  signIn, getConfig, getCategoryCount, searchInput,
+  signIn, getConfig, getCategoryCount, getSearchResults,
 };
 
 export default api;

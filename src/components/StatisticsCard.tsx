@@ -61,7 +61,7 @@ export default function StatisticsCard() {
   }
 
   React.useEffect(() => {
-    const category = recognizeCategory(categoryStep).split(' ').join('');
+    const category: Categories = recognizeCategory(categoryStep).split(' ').join('');
     const promise = api.getCategoryCount(category, token)
       .then((response) => {
         setCategoryCount(response.data.categoryCount);
