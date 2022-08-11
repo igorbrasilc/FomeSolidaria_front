@@ -1,9 +1,10 @@
 import * as React from 'react';
 import {
-  ListItemText, ListItemIcon, ListItemButton, ListItem, Divider, List, Button, Drawer, Box,
+  ListItemText, ListItemIcon, ListItemButton, ListItem, Divider, List, Button, Drawer, Box, Link,
 } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 import InfoIcon from '@mui/icons-material/Info';
+import CodeIcon from '@mui/icons-material/Code';
 
 export default function SideBar(
   { openSideBar, setOpenSideBar }: {openSideBar: boolean, setOpenSideBar: any},
@@ -26,8 +27,23 @@ export default function SideBar(
         return <SettingsIcon />;
       case 'Sobre':
         return <InfoIcon />;
+      case 'Desenvolvedor':
+        return <CodeIcon />;
       default:
         return <SettingsIcon />;
+    }
+  };
+
+  const recognizeLink = (text: string) => {
+    switch (text) {
+      case 'Configurações':
+        return '#';
+      case 'Sobre':
+        return 'https://igrejacasadooleiro.com.br/fome-solidaria';
+      case 'Desenvolvedor':
+        return 'https://github.com/igorbrasilc';
+      default:
+        return 'https://github.com/igorbrasilc';
     }
   };
 
@@ -39,15 +55,17 @@ export default function SideBar(
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        {['Configurações', 'Sobre'].map((text) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {recognizeIcon(text)}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
+        {['Configurações', 'Sobre', 'Desenvolvedor'].map((text) => (
+          <Link href={recognizeLink(text)} underline="none">
+            <ListItem key={text} disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  {recognizeIcon(text)}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItemButton>
+            </ListItem>
+          </Link>
         ))}
       </List>
     </Box>

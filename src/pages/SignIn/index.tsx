@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { AxiosError } from 'axios';
 import React, { useState } from 'react';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Logo from '../../assets/logo-provisoria.jpg';
 import Form from '../../components/Form';
 import PasswordInput from '../../components/PasswordInput';
@@ -107,7 +107,7 @@ function SignIn() {
           <Button variant="contained" type="submit" size="large" sx={styles.button} disabled={loading}>
             Entrar
           </Button>
-          <Link component={RouterLink} to="/app">
+          <Link href="https://igrejacasadooleiro.com.br/fome-solidaria" underline="always">
             <Typography color="secondary">Conheça mais do projeto</Typography>
           </Link>
         </Box>
