@@ -14,11 +14,12 @@ const styles = {
     alignItems: 'center',
   },
   button: {
-    maxWidth: '200px',
+    maxWidth: '100px',
     height: 'auto',
-    minWidth: '35vw',
+    minWidth: '25vw',
     fontSize: '20px',
-    marginTop: '20px'
+    marginTop: '20px',
+    fontSize: '15px'
   }
 };
 

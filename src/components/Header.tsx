@@ -21,7 +21,7 @@ export default function Header({ setOpenSideBar }: any) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between'}}>
           <Tooltip title="Opções" placement="right-end">
             <IconButton
               size="large"
@@ -33,9 +33,7 @@ export default function Header({ setOpenSideBar }: any) {
               <MenuIcon />
             </IconButton>
           </Tooltip>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Opções
-          </Typography>
+          <Button color="inherit" onClick={() => navigate('/main')}>Início</Button>
           <Button color="inherit" onClick={() => handleLogout()}>Sair</Button>
         </Toolbar>
       </AppBar>

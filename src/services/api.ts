@@ -32,8 +32,29 @@ async function getSearchResults(input: string, token: string | null) {
   return baseAPI.get(`/search?input=${input}`, config);
 }
 
+async function getDonee(id: number | undefined, token: string | null) {
+  const config = getConfig(token);
+  return baseAPI.get(`/donee/${id}`, config);
+}
+
+async function getSpouse(id: number | undefined, token: string | null) {
+  const config = getConfig(token);
+  return baseAPI.get(`/spouse/${id}`, config);
+}
+
+async function getColleague(id: number | undefined, token: string | null) {
+  const config = getConfig(token);
+  return baseAPI.get(`/colleague/${id}`, config);
+}
+
 const api = {
-  signIn, getConfig, getCategoryCount, getSearchResults,
+  signIn,
+  getConfig,
+  getCategoryCount,
+  getSearchResults,
+  getDonee,
+  getSpouse,
+  getColleague,
 };
 
 export default api;

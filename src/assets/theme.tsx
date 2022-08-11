@@ -4,38 +4,38 @@ import { orange } from '@mui/material/colors';
 const theme = createTheme({
   palette: {
     primary: {
-      main: orange[700],
+      main: '#EEC02E',
       contrastText: '#fff',
     },
     secondary: {
       main: orange[900],
     },
-    background: { default: '#ebebeb', paper: '#FFF' },
+    background: { default: '#cac6c6', paper: '#FFF' },
   },
   components: {
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          backgroundColor: '#001',
-          backgroundImage: 'linear-gradient(180deg, rgba(228,226,15,0.7567226719789478) 34%, rgba(255,255,255,0.8463585263206845) 87%)',
+          backgroundColor: '#f3f3f3',
+          //   backgroundImage: 'linear-gradient(180deg, rgba(255,167,81,1) 31%, rgba(255,226,89,1) 78%)',
           backgroundAttachment: 'fixed',
-        }
+        },
       },
     },
     MuiAvatar: {
-        styleOverrides: {
-            root: {
-                backgroundColor: orange[700]
-            }
-        }
+      styleOverrides: {
+        root: {
+          backgroundColor: orange[700],
+        },
+      },
     },
     MuiListItemText: {
-        styleOverrides: {
-            root: {
-                color: orange[700],
-            }
-        }
-    }
+      styleOverrides: {
+        root: {
+          color: orange[700],
+        },
+      },
+    },
   },
 });
 

@@ -34,6 +34,7 @@ const styles = {
     minWidth: '50vw',
     maxHeight: 250,
     overflowY: 'scroll',
+    backgroundColor: 'primary'
   },
   item: {
     '&:hover': {
@@ -64,8 +65,8 @@ export default function ResultList({ searchInput }: { searchInput: string }) {
 
   React.useEffect(() => {
     debounce(() => {
-      const promise = api.getSearchResults(searchInput, token)
-        .then((res) => {
+      const promise = api.getSearchResults(searchInput, token);
+        promise.then((res) => {
           const { results } = res.data;
           setItemsSearched(results);
           setLoading(false);
