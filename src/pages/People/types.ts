@@ -29,12 +29,13 @@ export interface DonationInfos {
     description: string | null,
     doneeId: number,
     categoryId: number,
+    created_at: Date,
     category: CategoryInfos
 }
 
 export interface CategoryInfos {
     id: number,
-    name: Categories
+    category: Categories
 }
 
 export interface NoteInfos {

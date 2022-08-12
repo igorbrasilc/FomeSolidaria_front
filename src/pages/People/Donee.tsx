@@ -55,10 +55,16 @@ export default function DoneeScreen() {
         <SpouseDataAccordion infos={doneeInfos.spouse} />
         <ChildDataAccordion infos={doneeInfos.children} />
         <ColleaguesDataAccordion infos={doneeInfos.colleagues} />
-        <Button sx={styles.button} variant="contained" onClick={() => navigate(`/donee/${doneeInfos.id}/history`)}>
+        <Button sx={styles.button} variant="contained" onClick={() => navigate(`/donee/${doneeInfos.id}/history`, { state: { doneeName: doneeInfos.name, doneeId: doneeInfos.id, donations: doneeInfos.donations } })}>
           Histórico
         </Button>
-        <Typography variant="text" component="h6">
+        <Button sx={styles.button} variant="contained" onClick={() => navigate(`/donee/${doneeInfos.id}/new-donation`)}>
+          Nova doação
+        </Button>
+        <Button sx={styles.button} variant="contained" onClick={() => navigate(`/donee/${doneeInfos.id}/update`)}>
+          Anotações
+        </Button>
+        <Typography component="h6">
           Registrado em
           {' '}
           {dayjs(doneeInfos.created_at).format('DD/MM/YY HH:mm')}

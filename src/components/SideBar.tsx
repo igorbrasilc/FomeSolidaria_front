@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  ListItemText, ListItemIcon, ListItemButton, ListItem, Divider, List, Button, Drawer, Box, Link,
+  ListItemText, ListItemIcon, ListItemButton, ListItem, List, Button, Drawer, Box, Link,
 } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 import InfoIcon from '@mui/icons-material/Info';

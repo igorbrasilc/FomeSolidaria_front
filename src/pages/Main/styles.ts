@@ -17,7 +17,6 @@ const styles = {
     maxWidth: '100px',
     height: 'auto',
     minWidth: '25vw',
-    fontSize: '20px',
     marginTop: '20px',
     fontSize: '15px'
   }
