@@ -5,49 +5,49 @@ import {
 } from '@mui/material';
 import dayjs from 'dayjs';
 import styles from '../styles';
-import { DonationInfos } from '../../People/types';
+import { NoteInfos } from '../../People/types';
 
-interface HistoryProps {
+interface NotesProps {
     page: number,
-    donations: DonationInfos[],
+    notes: NoteInfos[],
     maxItems: number
 }
 
-export default function HistoryAccordion(props: HistoryProps) {
-  const { page, donations, maxItems } = props;
+export default function NotesAccordion(props: NotesProps) {
+  const { page, notes, maxItems } = props;
 
   const indexStart = page * maxItems - maxItems;
   const indexEnd = indexStart + maxItems;
 
-  if (!donations.length) {
+  if (!notes.length) {
     return (
         <Typography variant="h5">Não há registros</Typography>
     )
   }
 
-  const donationsToDisplay = donations.slice(indexStart, indexEnd);
+  const notesToDisplay = notes.slice(indexStart, indexEnd);
 
-  return donationsToDisplay.map((donation) => (
-    <Accordion sx={styles.accordion} key={`${donation.id} - Donations`}>
+  function verifyReminder(reminder: Date | null) {
+    if (!reminder) return 'Não há lembrete';
+
+    return `Lembrete para ${dayjs(reminder).format('DD/MM/YYYY')}`;
+  }
+
+  return notesToDisplay.map((note) => (
+    <Accordion sx={styles.accordion} key={`${note.id} - Notes`}>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
         id="personal-data"
       >
-        <Typography color='black'>{`${dayjs(donation.created_at).format('DD/MM/YY')} - ${donation.category.category}`}</Typography>
+        <Typography color='black'>{`${dayjs(note.created_at).format('DD/MM/YY')} - ${verifyReminder(note.reminder)}`}</Typography>
       </AccordionSummary>
       <AccordionDetails>
         <List sx={styles.list} dense>
           <Divider />
           <ListItem sx={styles.list.item}>
             <ListItemText
-              primary={`${donation.quantity} - Quantidade`}
-            />
-          </ListItem>
-          <Divider />
-          <ListItem sx={styles.list.item}>
-            <ListItemText
-              primary={`${donation.description ? `Descrição: ${donation.description}` : 'Não há descrição'}`}
+              primary={`Anotação: ${note.note}`}
             />
           </ListItem>
         </List>

@@ -21,6 +21,18 @@ export default function DoneeScreen() {
   const [doneeInfos, setDoneeInfos] = React.useState<any>({});
   const [loading, setLoading] = React.useState(true);
 
+  const historyInfo = { 
+    doneeName: doneeInfos.name, 
+    doneeId: doneeInfos.id, 
+    donations: doneeInfos.donations 
+    }
+
+    const notesInfo = {
+        doneeName: doneeInfos.name, 
+    doneeId: doneeInfos.id, 
+    notes: doneeInfos.notes 
+    }
+
   if (!token) {
     setMessage({ type: 'error', text: 'Você não tem autorização, faça login' });
     navigate('/');
@@ -55,13 +67,13 @@ export default function DoneeScreen() {
         <SpouseDataAccordion infos={doneeInfos.spouse} />
         <ChildDataAccordion infos={doneeInfos.children} />
         <ColleaguesDataAccordion infos={doneeInfos.colleagues} />
-        <Button sx={styles.button} variant="contained" onClick={() => navigate(`/donee/${doneeInfos.id}/history`, { state: { doneeName: doneeInfos.name, doneeId: doneeInfos.id, donations: doneeInfos.donations } })}>
+        <Button sx={styles.button} variant="contained" onClick={() => navigate(`/donee/${doneeInfos.id}/history`, { state: historyInfo })}>
           Histórico
         </Button>
         <Button sx={styles.button} variant="contained" onClick={() => navigate(`/donee/${doneeInfos.id}/new-donation`)}>
           Nova doação
         </Button>
-        <Button sx={styles.button} variant="contained" onClick={() => navigate(`/donee/${doneeInfos.id}/update`)}>
+        <Button sx={styles.button} variant="contained" onClick={() => navigate(`/donee/${doneeInfos.id}/notes`, { state: notesInfo })}>
           Anotações
         </Button>
         <Typography component="h6">

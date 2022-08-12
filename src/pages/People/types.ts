@@ -41,7 +41,7 @@ export interface CategoryInfos {
 export interface NoteInfos {
     id: number,
     note: string,
-    reminder: string | null,
+    reminder: Date | null,
     doneeId: number,
     created_at: Date,
     updated_at: Date

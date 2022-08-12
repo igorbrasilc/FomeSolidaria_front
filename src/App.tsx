@@ -6,6 +6,7 @@ import {
 import SignIn from './pages/SignIn';
 import Main from './pages/Main';
 import HistoryScreen from './pages/History';
+import NotesScreen from './pages/Notes';
 import { AuthProvider } from './contexts/AuthContext';
 import { AlertProvider } from './contexts/AlertContext';
 import { SpouseScreen, DoneeScreen, ColleagueScreen } from './pages/People';
@@ -26,7 +27,7 @@ function App() {
               <Route exact path="/donee/:id" element={<DoneeScreen />} />
               <Route exact path="/donee/:id/history" element={<HistoryScreen />} />
               {/* <Route exact path="/donee/:id/new-donation" element={<DoneeScreen />} /> */}
-              {/* <Route exact path="/donee/:id/update" element={<DoneeScreen />} /> */}
+              <Route exact path="/donee/:id/notes" element={<NotesScreen />} />
               <Route exact path="/colleague/:id" element={<ColleagueScreen />} />
             </Routes>
           </BrowserRouter>
