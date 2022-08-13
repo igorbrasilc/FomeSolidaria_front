@@ -21,6 +21,7 @@ export default function Step1(props: Props) {
 
   const { register, handleSubmit, formState: { errors } } = useForm<DoneeFormData['donee']>();
   const { setMessage } = useAlert();
+  const key = Object.keys({...errors})[0] as keyof DoneeFormData['spouse'];
 
   const onSubmit = (data: DoneeFormData['donee']) => {
     setDoneeInfos(data);
@@ -28,9 +29,10 @@ export default function Step1(props: Props) {
   };
 
   React.useEffect(() => {
-    if (!errors.name) return;
-    setMessage({ type: 'error', text: errors.name.message || '' });
-  }, [errors]);
+    if (errors[key]) {
+        setMessage({ type: 'error', text: {...errors}[key]?.message || 'Erro' });
+    }
+}, [errors[key]]);
 
   return (
     <Box
@@ -72,11 +74,12 @@ export default function Step1(props: Props) {
           {...register('rg')}
           id="rg"
           label="RG"
-          placeholder="Digite apenas números"
+          placeholder="Apenas números"
+          {...register('rg', { pattern: {value: /\d{7}/, message: 'RG deve ter ao menos 7 números'}})}
           defaultValue={doneeInfos.rg}
         />
         <TextField
-          {...register('cpf')}
+          {...register('cpf', { pattern: {value: /^\d{11}$/, message: 'RG deve ter ao menos 11 números'}})}
           id="cpf"
           label="CPF"
           placeholder="Apenas números, 11 dígitos"
