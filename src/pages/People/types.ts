@@ -10,13 +10,15 @@ export type Address = {
     id: number,
     street: string,
     district: string,
-    number: string | number
+    number: string | number,
+    state: string | null,
+    city: string | null
 }
 
 export interface ChildInfos {
     id: number,
     name: string,
-    birthdate: string | null
+    birthdate: Date| null
     contact: string | null,
     doneeId: number,
     created_at: Date,
@@ -50,7 +52,7 @@ export interface NoteInfos {
 export interface SpouseInfos {
         id: number,
         name: string,
-        birthdate: string,
+        birthdate: Date,
         contact: string | null,
         occupation: string | null,
         rg: string | null,
@@ -64,7 +66,7 @@ export interface SpouseInfos {
 export interface ColleagueInfos {
         id: number,
         name: string,
-        birthdate?: string,
+        birthdate?: Date,
         contact: string | null,
         occupation: string | null,
         rg: string | null,
@@ -78,7 +80,7 @@ export interface ColleagueInfos {
 export interface DoneeInfos {
         id: number,
         name: string,
-        birthdate?: string,
+        birthdate?: Date,
         contact: string | null,
         occupation: string | null,
         rg: string | null,

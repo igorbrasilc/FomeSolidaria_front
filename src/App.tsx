@@ -6,6 +6,7 @@ import {
 import SignIn from './pages/SignIn';
 import Main from './pages/Main';
 import HistoryScreen from './pages/History';
+import DoneeForm from './pages/DoneeForm';
 import NotesScreen from './pages/Notes';
 import { AuthProvider } from './contexts/AuthContext';
 import { AlertProvider } from './contexts/AlertContext';
@@ -23,6 +24,7 @@ function App() {
             <Routes>
               <Route exact path="/" element={<SignIn />} />
               <Route exact path="/main" element={<Main />} />
+              <Route exact path="/new-donee" element={<DoneeForm />} />
               <Route exact path="/spouse/:id" element={<SpouseScreen />} />
               <Route exact path="/donee/:id" element={<DoneeScreen />} />
               <Route exact path="/donee/:id/history" element={<HistoryScreen />} />

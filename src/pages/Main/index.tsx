@@ -34,7 +34,7 @@ export default function Main() {
           {`OLÁ ${decodedToken?.name.toUpperCase()}!`}
         </Typography>
         <StatisticsCard />
-        <Button variant="contained" sx={styles.button}>NOVO CADASTRO</Button>
+        <Button variant="contained" sx={styles.button} onClick={() => navigate('/new-donee')}>NOVO CADASTRO</Button>
         <SearchBar setSearchInput={setSearchInput} searchInput={searchInput} />
         {searchInput.length < 2 ? <></> : <ResultList searchInput={searchInput} />}
       </Box>
