@@ -2,10 +2,8 @@ import React from 'react';
 import {
   TextField, Box, Typography, Button,
 } from '@mui/material';
-import { joiResolver } from '@hookform/resolvers/joi';
 import { useForm } from 'react-hook-form';
 import useAlert from '../../../hooks/useAlert';
-import { step1Schema } from '../schemas/stepsSchemas';
 
 import styles from '../styles';
 import { DoneeFormData } from '..';

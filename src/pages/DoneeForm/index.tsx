@@ -108,7 +108,7 @@ export default function DoneeForm() {
       case 1:
         return <Step1 doneeInfos={formData.donee} setDoneeInfos={(doneeInfos: DoneeFormData['donee']) => setFormData({ ...formData, donee: doneeInfos })} setStep={setStep} step={step} />;
       case 2:
-        return <Step2 />;
+        return <Step2 spouseInfos={formData.spouse} setSpouseInfos={(spouseInfos: DoneeFormData['spouse']) => setFormData({ ...formData, spouse: spouseInfos })} setStep={setStep} step={step} />;
       default:
         return <Step1 doneeInfos={formData.donee} setDoneeInfos={(doneeInfos: DoneeFormData['donee']) => setFormData({ ...formData, donee: doneeInfos })} setStep={setStep} step={step} />;
     }
