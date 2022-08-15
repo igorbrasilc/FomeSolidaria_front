@@ -57,7 +57,7 @@ export default function SpouseScreen() {
           {' '}
           {spouseInfos.donee.name.toUpperCase()}
         </Button>
-        <Typography variant="text" component="h6">
+        <Typography>
           Registrado em
           {' '}
           {dayjs(spouseInfos.created_at).format('DD/MM/YY HH:mm')}

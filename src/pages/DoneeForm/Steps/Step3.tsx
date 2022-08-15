@@ -28,7 +28,8 @@ export default function Step3(props: Props) {
   const key = Number(Object.keys({ ...errors })[0]) as number;
 
   const onSubmit = (data: DoneeFormData['colleagues'][]) => {
-    setColleaguesInfos(data);
+    const valuesInArray = Object.values(data);
+    setColleaguesInfos(valuesInArray);
     setStep(step + 1);
   };
 

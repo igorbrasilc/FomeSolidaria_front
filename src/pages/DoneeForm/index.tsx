@@ -3,19 +3,18 @@ import { useNavigate, useParams, useLocation } from 'react-router';
 import {
   Typography, Box, Button, Pagination,
 } from '@mui/material';
-import CircularProgress from '@mui/material/CircularProgress';
 import styles from './styles';
 import useAuth from '../../hooks/useAuth';
 import useAlert from '../../hooks/useAlert';
 import Header from '../../components/Header';
 import SideBar from '../../components/SideBar';
-import api from '../../services/api';
 import Step1 from './Steps/Step1';
 import Step2 from './Steps/Step2';
 import Step3 from './Steps/Step3';
 import Step4 from './Steps/Step4';
 import Step5 from './Steps/Step5';
 import Step6 from './Steps/Step6';
+import Step7 from './Steps/Step7';
 
 export interface DoneeFormData {
     donee: {
@@ -27,15 +26,15 @@ export interface DoneeFormData {
         cpf: string | null,
     },
     spouse: {
-        name: string,
-        birthdate: Date,
+        name: string | null,
+        birthdate: Date | null,
         contact: string | null,
         occupation: string | null,
         rg: string | null,
         cpf: string | null,
     },
     colleagues: {
-        name: string,
+        name: string | null,
         contact: string | null,
         occupation: string | null,
         rg: string | null,
@@ -47,14 +46,14 @@ export interface DoneeFormData {
         contact: string | null,
     }[],
     address: {
-        street: string,
-        district: string,
-        number: string,
+        street: string | null,
+        district: string | null,
+        number: string | null,
         state: string | null,
         city: string | null
     },
     note: {
-        note: string,
+        note: string | null,
         reminder: Date | null
     }
 }
@@ -74,30 +73,30 @@ export default function DoneeForm() {
     donee: {
       name: '',
       birthdate: new Date(),
-      contact: '',
-      occupation: '',
-      rg: '',
-      cpf: '',
+      contact: null,
+      occupation: null,
+      rg: null,
+      cpf: null,
     },
     spouse: {
-      name: '',
+      name: null,
       birthdate: new Date(),
-      contact: '',
-      occupation: '',
-      rg: '',
-      cpf: '',
+      contact: null,
+      occupation: null,
+      rg: null,
+      cpf: null,
     },
     colleagues: [],
     children: [],
     address: {
-      street: '',
-      district: '',
-      number: '',
+      street: null,
+      district: null,
+      number: null,
       state: 'Santa Catarina',
       city: 'Itapema',
     },
     note: {
-      note: '',
+      note: null,
       reminder: new Date(),
     },
   });
@@ -125,6 +124,8 @@ export default function DoneeForm() {
         return <Step5 addressInfos={formData.address} setAddressInfos={(addressInfos: DoneeFormData['address']) => setFormData({ ...formData, address: addressInfos })} setStep={setStep} step={step} hasAddress={hasAddress} setHasAddress={setHasAddress} />;
       case 6:
         return <Step6 noteInfos={formData.note} setNoteInfos={(noteInfos: DoneeFormData['note']) => setFormData({ ...formData, note: noteInfos })} setStep={setStep} step={step} hasNote={hasNote} setHasNote={setHasNote} />;
+      case 7:
+        return <Step7 formInfos={formData} setStep={setStep} step={step} />;
       default:
         return <Step1 doneeInfos={formData.donee} setDoneeInfos={(doneeInfos: DoneeFormData['donee']) => setFormData({ ...formData, donee: doneeInfos })} setStep={setStep} step={step} />;
     }

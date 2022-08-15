@@ -79,7 +79,7 @@ export default function Step1(props: Props) {
           defaultValue={doneeInfos.rg}
         />
         <TextField
-          {...register('cpf', { pattern: {value: /^\d{11}$/, message: 'RG deve ter ao menos 11 números'}})}
+          {...register('cpf', { pattern: {value: /^\d{11}$/, message: 'CPF deve ter ao menos 11 números'}})}
           id="cpf"
           label="CPF"
           placeholder="Apenas números, 11 dígitos"

@@ -28,6 +28,7 @@ export default function Step6(props: Props) {
 
   const onSubmit = (data: DoneeFormData['note']) => {
     setNoteInfos(data);
+    setStep(step + 1);
   };
 
   React.useEffect(() => {

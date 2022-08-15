@@ -28,7 +28,8 @@ export default function Step4(props: Props) {
   const key = Number(Object.keys({ ...errors })[0]) as number;
 
   const onSubmit = (data: DoneeFormData['children'][]) => {
-    setChildrenInfos(data);
+    const valuesInArray = Object.values(data);
+    setChildrenInfos(valuesInArray);
     setStep(step + 1);
   };
 

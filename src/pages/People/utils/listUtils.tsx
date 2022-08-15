@@ -4,6 +4,7 @@ import {
   Typography, AccordionDetails, AccordionSummary, Accordion, List, ListItemText, ListItem, Divider,
 } from '@mui/material';
 import { useNavigate } from 'react-router';
+import dayjs from 'dayjs';
 import {
   ColleagueInfos, SpouseInfos, Address, DoneeInfos, ChildInfos,
 } from '../types';
@@ -22,7 +23,7 @@ interface ColleagueDataProps {
 }
 
 interface SpouseDataProps {
-    infos: SpouseInfos[]
+    infos: SpouseInfos
 }
 
 interface AddressProps {
@@ -58,7 +59,7 @@ export function PersonalDataAccordion(props: PersonalDataProps) {
           <Divider />
           <ListItem sx={styles.list.item}>
             <ListItemText
-              primary={`${infos.birthdate ? `${infos.birthdate} - Data de nascimento` : 'Data de nascimento não cadastrada'}`}
+              primary={`${infos.birthdate ? `${dayjs(infos.birthdate).format('DD/MM/YY')} - Data de nascimento` : 'Data de nascimento não cadastrada'}`}
             />
           </ListItem>
           <Divider />
@@ -157,22 +158,8 @@ export function SpouseDataAccordion(props: SpouseDataProps) {
   const { infos } = props;
   const navigate = useNavigate();
 
-  function returnSpouse(spouseArr: SpouseInfos[]) {
-    return spouseArr.map((spouse) => (
-      <>
-        <Divider />
-        <ListItem sx={styles.list.item} key={spouse.name} onClick={() => navigate(`/spouse/${spouse.id}`)}>
-          <ListItemText
-            primary={spouse.name}
-            secondary="Ir para"
-          />
-        </ListItem>
-      </>
-    ));
-  }
-
   return (
-    <Accordion sx={styles.accordion} disabled={!infos.length}>
+    <Accordion sx={styles.accordion} disabled={!infos.id}>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
@@ -182,7 +169,13 @@ export function SpouseDataAccordion(props: SpouseDataProps) {
       </AccordionSummary>
       <AccordionDetails>
         <List sx={styles.list} dense>
-          {returnSpouse(infos)}
+          <Divider />
+          <ListItem sx={styles.list.item} key={infos.name} onClick={() => navigate(`/spouse/${infos.id}`)}>
+            <ListItemText
+              primary={infos.name}
+              secondary="Ir para"
+            />
+          </ListItem>
         </List>
       </AccordionDetails>
     </Accordion>
