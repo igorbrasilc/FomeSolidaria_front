@@ -13,7 +13,7 @@ interface NotesProps {
     maxItems: number
 }
 
-export default function NotesAccordion(props: NotesProps) {
+export default function NotesAccordion(props: any) {
   const { page, notes, maxItems } = props;
 
   const indexStart = page * maxItems - maxItems;

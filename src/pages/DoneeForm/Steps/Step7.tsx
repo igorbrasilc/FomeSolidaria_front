@@ -54,7 +54,7 @@ export default function Step7(props: Props) {
       {loading ? <CircularProgress size={60} />
         : (
           <>
-            <Typography variant="h5" fontColor={success ? 'success' : 'error'}>{success ? 'Donatário criado!' : 'Houve algum erro na requisição, tente novamente mais tarde'}</Typography>
+            <Typography variant="h5" color={success ? 'success' : 'error'}>{success ? 'Donatário criado!' : 'Houve algum erro na requisição, tente novamente mais tarde'}</Typography>
             <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
               <Button sx={styles.button} variant="contained" onClick={() => setStep(step - 1)}>Voltar</Button>
               {success

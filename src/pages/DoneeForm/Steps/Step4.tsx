@@ -27,8 +27,8 @@ export default function Step4(props: Props) {
   const [numberOfChildren, setNumberOfChildren] = React.useState(1);
   const key = Number(Object.keys({ ...errors })[0]) as number;
 
-  const onSubmit = (data: DoneeFormData['children'][]) => {
-    const valuesInArray = Object.values(data);
+  const onSubmit = (data: any) => {
+    const valuesInArray = data['0'];
     setChildrenInfos(valuesInArray);
     setStep(step + 1);
   };
@@ -47,14 +47,14 @@ export default function Step4(props: Props) {
           <Typography variant="h5">{`Filho(a) ${i + 1}`}</Typography>
           <TextField
             required
-            {...register(`${i}.name`, { required: hasChildren ? 'Nome é necessário' : false, min: 1 })}
+            {...register(`0.${i}.name`, { required: hasChildren ? 'Nome é necessário' : false, min: 1 })}
             id="outlined-required"
             label="Nome completo"
             defaultValue={childrenInfos[i]?.name || ''}
             disabled={!hasChildren}
           />
           <TextField
-            {...register(`${i}.birthdate`)}
+            {...register(`0.${i}.birthdate`)}
             id="date-required"
             type="date"
             label="Data de nascimento"
@@ -65,7 +65,7 @@ export default function Step4(props: Props) {
             disabled={!hasChildren}
           />
           <TextField
-            {...register(`${i}.contact`)}
+            {...register(`0.${i}.contact`)}
             id="contact"
             label="Contato"
             placeholder="Email, telefone, etc"

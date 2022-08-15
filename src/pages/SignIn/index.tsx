@@ -101,7 +101,6 @@ function SignIn() {
           label="Senha"
           onChange={handleInputChange}
           value={formData.password}
-          disabled={loading}
         />
         <Box sx={styles.actionsContainer}>
           <Button variant="contained" type="submit" size="large" sx={styles.button} disabled={loading}>

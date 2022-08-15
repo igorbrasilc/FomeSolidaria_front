@@ -54,7 +54,7 @@ export default function HistoryScreen() {
         <Button sx={styles.button} variant="outlined" onClick={() => navigate(`/donee/${doneeInfos.doneeId}`)}>
           Voltar
         </Button>
-        <HistoryAccordion 
+        <HistoryAccordion
           page={page}
           donations={doneeInfos.donations}
           maxItems={MAX_HISTORY_ITEMS}

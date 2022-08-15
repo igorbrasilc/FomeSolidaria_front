@@ -27,8 +27,8 @@ export default function Step3(props: Props) {
   const [numberOfColleagues, setNumberOfColleagues] = React.useState(1);
   const key = Number(Object.keys({ ...errors })[0]) as number;
 
-  const onSubmit = (data: DoneeFormData['colleagues'][]) => {
-    const valuesInArray = Object.values(data);
+  const onSubmit = (data: any) => {
+    const valuesInArray = data['0'];
     setColleaguesInfos(valuesInArray);
     setStep(step + 1);
   };
@@ -47,14 +47,14 @@ export default function Step3(props: Props) {
           <Typography variant="h5">{`Colega ${i + 1}`}</Typography>
           <TextField
             required
-            {...register(`${i}.name`, { required: hasColleagues ? 'Nome é necessário' : false, min: 1 })}
+            {...register(`0.${i}.name`, { required: hasColleagues ? 'Nome é necessário' : false, min: 1 })}
             id="outlined-required"
             label="Nome completo"
             defaultValue={colleaguesInfos[i]?.name || ''}
             disabled={!hasColleagues}
           />
           <TextField
-            {...register(`${i}.contact`)}
+            {...register(`0.${i}.contact`)}
             id="contact"
             label="Contato"
             placeholder="Email, telefone, etc"
@@ -62,7 +62,7 @@ export default function Step3(props: Props) {
             disabled={!hasColleagues}
           />
           <TextField
-            {...register(`${i}.rg`, { pattern: { value: /\d{7}/, message: 'RG deve ter ao menos 7 números' } })}
+            {...register(`0.${i}.rg`, { pattern: { value: /\d{7}/, message: 'RG deve ter ao menos 7 números' } })}
             id="rg"
             label="RG"
             placeholder="Apenas números"
@@ -70,7 +70,7 @@ export default function Step3(props: Props) {
             disabled={!hasColleagues}
           />
           <TextField
-            {...register(`${i}.cpf`, { pattern: { value: /^\d{11}$/, message: 'CPF deve ter ao menos 11 números' } })}
+            {...register(`0.${i}.cpf`, { pattern: { value: /^\d{11}$/, message: 'CPF deve ter ao menos 11 números' } })}
             id="cpf"
             label="CPF"
             placeholder="Apenas números, 11 dígitos"
@@ -78,7 +78,7 @@ export default function Step3(props: Props) {
             disabled={!hasColleagues}
           />
           <TextField
-            {...register(`${i}.occupation`)}
+            {...register(`0.${i}.occupation`)}
             id="occupation"
             label="Ocupação"
             defaultValue={colleaguesInfos[i]?.occupation || ''}

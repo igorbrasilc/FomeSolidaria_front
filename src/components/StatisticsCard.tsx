@@ -4,6 +4,7 @@ import {
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import Categories from '../types/categoryTypes';
 import api from '../services/api';
 import useAuth from '../hooks/useAuth';
 import useAlert from '../hooks/useAlert';
@@ -30,7 +31,7 @@ const styles = {
   },
 };
 
-type Categories = 'Cesta P' | 'Cesta G' | 'Leite' | 'Móvel' | 'Roupa' | 'Outros' | '';
+type CategoriesLocal = 'Cesta P' | 'Cesta G' | 'Leite' | 'Móvel' | 'Roupa' | 'Outros' | '';
 
 export default function StatisticsCard() {
   const [categoryStep, setCategoryStep] = React.useState(1);
@@ -39,7 +40,7 @@ export default function StatisticsCard() {
   const { setMessage } = useAlert();
 
   function recognizeCategory(step: number) {
-    let category: Categories = '';
+    let category: CategoriesLocal = '';
     switch (step) {
       case 1:
         category = 'Cesta P';
@@ -57,11 +58,11 @@ export default function StatisticsCard() {
         category = 'Cesta P';
         break;
     }
-    return category;
+    return category.split(' ').join('');
   }
 
   React.useEffect(() => {
-    const category: Categories = recognizeCategory(categoryStep).split(' ').join('');
+    const category = recognizeCategory(categoryStep) as Categories;
     const promise = api.getCategoryCount(category, token)
       .then((response) => {
         setCategoryCount(response.data.categoryCount);

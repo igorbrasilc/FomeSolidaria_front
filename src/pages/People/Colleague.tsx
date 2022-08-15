@@ -57,7 +57,7 @@ export default function ColleagueScreen() {
           {' '}
           {colleagueInfos.donee.name.toUpperCase()}
         </Button>
-        <Typography variant="text" component="h6">
+        <Typography>
           Registrado em
           {' '}
           {dayjs(colleagueInfos.created_at).format('DD/MM/YY HH:mm')}

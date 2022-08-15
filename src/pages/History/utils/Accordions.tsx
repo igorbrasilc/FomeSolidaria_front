@@ -13,13 +13,11 @@ interface HistoryProps {
     maxItems: number
 }
 
-export default function HistoryAccordion(props: HistoryProps) {
+export default function HistoryAccordion(props: any) {
   const { page, donations, maxItems } = props;
 
   const indexStart = page * maxItems - maxItems;
   const indexEnd = indexStart + maxItems;
-
-  console.log('donations', donations);
 
   if (!donations.length) {
     return (
@@ -29,7 +27,7 @@ export default function HistoryAccordion(props: HistoryProps) {
 
   const donationsToDisplay = donations.slice(indexStart, indexEnd);
 
-  return donationsToDisplay.map((donation) => (
+  return donationsToDisplay.map((donation: any) => (
     <Accordion sx={styles.accordion} key={`${donation.id} - Donations`}>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
