@@ -40,7 +40,7 @@ export default function Step7(props: Props) {
         setSuccess(false);
         setMessage({ type: 'error', text: err.message || 'Donatário não criado, erro interno' });
       });
-  }, [loading]);
+  }, []);
 
   return (
     <Box

@@ -39,7 +39,7 @@ export default function Step3(props: Props) {
         setSuccess(false);
         setMessage({ type: 'error', text: err.message || 'Doação não registrada, erro interno' });
       });
-  }, [loading]);
+  }, []);
 
   return (
     <Box
@@ -58,7 +58,7 @@ export default function Step3(props: Props) {
               <Button sx={styles.button} variant="contained" onClick={() => setStep(step - 1)}>Voltar</Button>
               {success
                 ? <Button sx={styles.button} variant="contained" onClick={() => navigate(`/donee/${id}`)}>Ir para a página do usuário</Button>
-                : <Button sx={styles.button} variant="contained" onClick={() => setLoading(true)}>Tentar novamente</Button>}
+                : <Button sx={styles.button} variant="contained" onClick={() => setLoading(!loading)}>Tentar novamente</Button>}
             </Box>
           </>
         )}
