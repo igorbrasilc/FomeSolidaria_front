@@ -12,7 +12,7 @@ interface IAuthContext {
   token: string | null;
   signIn: (token: string) => void;
   signOut: () => void;
-  decodeToken: (token: string | null) => DecodedToken;
+  decodeToken: any;
 }
 
 export const AuthContext = createContext<IAuthContext | null>(null);
@@ -32,7 +32,8 @@ export function AuthProvider({ children }: Props) {
     localStorage.setItem(LOCAL_STORAGE_KEY, tokenProvided);
   }
 
-  function decodeToken(tokenProvided: string) {
+  function decodeToken(tokenProvided: string | null) {
+    if (!tokenProvided) return null;
     const decodedToken: DecodedToken = jwt_decode(tokenProvided);
     delete decodedToken.password;
     return decodedToken;

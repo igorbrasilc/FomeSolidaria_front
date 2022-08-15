@@ -21,8 +21,8 @@ export default function NotesAccordion(props: any) {
 
   if (!notes.length) {
     return (
-        <Typography variant="h5">Não há registros</Typography>
-    )
+      <Typography variant="h5">Não há registros</Typography>
+    );
   }
 
   const notesToDisplay = notes.slice(indexStart, indexEnd);
@@ -33,14 +33,14 @@ export default function NotesAccordion(props: any) {
     return `Lembrete para ${dayjs(reminder).format('DD/MM/YYYY')}`;
   }
 
-  return notesToDisplay.map((note) => (
+  return notesToDisplay.map((note: any) => (
     <Accordion sx={styles.accordion} key={`${note.id} - Notes`}>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
         id="personal-data"
       >
-        <Typography color='black'>{`${dayjs(note.created_at).format('DD/MM/YY')} - ${verifyReminder(note.reminder)}`}</Typography>
+        <Typography color="black">{`${dayjs(note.created_at).format('DD/MM/YY')} - ${verifyReminder(note.reminder)}`}</Typography>
       </AccordionSummary>
       <AccordionDetails>
         <List sx={styles.list} dense>
