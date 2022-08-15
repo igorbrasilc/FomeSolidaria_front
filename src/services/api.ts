@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Categories from '../types/categoryTypes';
 import { DoneeFormData } from '../pages/DoneeForm/index';
+import { DonationFormData } from '../pages/DonationForm/index';
 
 const baseAPI = axios.create({
   baseURL: 'http://localhost:4000',
@@ -43,6 +44,11 @@ async function postDonee(data: DoneeFormData, token: string | null) {
   return baseAPI.post('new-donee', data, config);
 }
 
+async function postDonation(data: DonationFormData, token: string | null, id: number | undefined) {
+  const config = getConfig(token);
+  return baseAPI.post(`/donee/${id}/new-donation`, data, config);
+}
+
 async function getSpouse(id: number | undefined, token: string | null) {
   const config = getConfig(token);
   return baseAPI.get(`/spouse/${id}`, config);
@@ -62,6 +68,7 @@ const api = {
   getSpouse,
   getColleague,
   postDonee,
+  postDonation
 };
 
 export default api;

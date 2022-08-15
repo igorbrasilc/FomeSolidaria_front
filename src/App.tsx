@@ -7,6 +7,7 @@ import SignIn from './pages/SignIn';
 import Main from './pages/Main';
 import HistoryScreen from './pages/History';
 import DoneeForm from './pages/DoneeForm';
+import DonationForm from './pages/DonationForm';
 import NotesScreen from './pages/Notes';
 import { AuthProvider } from './contexts/AuthContext';
 import { AlertProvider } from './contexts/AlertContext';
@@ -28,7 +29,7 @@ function App() {
               <Route exact path="/spouse/:id" element={<SpouseScreen />} />
               <Route exact path="/donee/:id" element={<DoneeScreen />} />
               <Route exact path="/donee/:id/history" element={<HistoryScreen />} />
-              {/* <Route exact path="/donee/:id/new-donation" element={<DoneeScreen />} /> */}
+              <Route exact path="/donee/:id/new-donation" element={<DonationForm />} />
               <Route exact path="/donee/:id/notes" element={<NotesScreen />} />
               <Route exact path="/colleague/:id" element={<ColleagueScreen />} />
             </Routes>

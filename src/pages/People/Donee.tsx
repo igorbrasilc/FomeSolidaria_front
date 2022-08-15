@@ -9,7 +9,9 @@ import useAuth from '../../hooks/useAuth';
 import useAlert from '../../hooks/useAlert';
 import Header from '../../components/Header';
 import SideBar from '../../components/SideBar';
-import { PersonalDataAccordion, AddressDataAccordion, ChildDataAccordion, ColleaguesDataAccordion, SpouseDataAccordion } from './utils/listUtils';
+import {
+  PersonalDataAccordion, AddressDataAccordion, ChildDataAccordion, ColleaguesDataAccordion, SpouseDataAccordion,
+} from './utils/listUtils';
 import api from '../../services/api';
 
 export default function DoneeScreen() {
@@ -21,17 +23,17 @@ export default function DoneeScreen() {
   const [doneeInfos, setDoneeInfos] = React.useState<any>({});
   const [loading, setLoading] = React.useState(true);
 
-  const historyInfo = { 
-    doneeName: doneeInfos.name, 
-    doneeId: doneeInfos.id, 
-    donations: doneeInfos.donations 
-    }
+  const historyInfo = {
+    doneeName: doneeInfos.name,
+    doneeId: doneeInfos.id,
+    donations: doneeInfos.donations,
+  };
 
-    const notesInfo = {
-        doneeName: doneeInfos.name, 
-    doneeId: doneeInfos.id, 
-    notes: doneeInfos.notes 
-    }
+  const notesInfo = {
+    doneeName: doneeInfos.name,
+    doneeId: doneeInfos.id,
+    notes: doneeInfos.notes,
+  };
 
   if (!token) {
     setMessage({ type: 'error', text: 'Você não tem autorização, faça login' });
@@ -42,6 +44,7 @@ export default function DoneeScreen() {
     const promise: Promise<AxiosResponse<any, any>> = api.getDonee(Number(id), token);
     promise.then((response) => {
       setDoneeInfos(response.data.doneeInfos);
+      console.log('doneeInfos', response.data.doneeInfos);
       setLoading(false);
     })
       .catch((err) => {

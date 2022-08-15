@@ -158,8 +158,8 @@ export function SpouseDataAccordion(props: SpouseDataProps) {
   const { infos } = props;
   const navigate = useNavigate();
 
-  return (
-    <Accordion sx={styles.accordion} disabled={!infos.id}>
+  return infos ? (
+    <Accordion sx={styles.accordion}>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
@@ -179,7 +179,18 @@ export function SpouseDataAccordion(props: SpouseDataProps) {
         </List>
       </AccordionDetails>
     </Accordion>
-  );
+  )
+    : (
+      <Accordion sx={styles.accordion} disabled>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="spouse-data"
+        >
+          <Typography>Cônjuge</Typography>
+        </AccordionSummary>
+      </Accordion>
+    );
 }
 
 export function ChildDataAccordion(props: ChildDataProps) {

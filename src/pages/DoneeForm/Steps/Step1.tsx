@@ -21,7 +21,7 @@ export default function Step1(props: Props) {
 
   const { register, handleSubmit, formState: { errors } } = useForm<DoneeFormData['donee']>();
   const { setMessage } = useAlert();
-  const key = Object.keys({...errors})[0] as keyof DoneeFormData['spouse'];
+  const key = Object.keys({...errors})[0] as keyof DoneeFormData['donee'];
 
   const onSubmit = (data: DoneeFormData['donee']) => {
     setDoneeInfos(data);
