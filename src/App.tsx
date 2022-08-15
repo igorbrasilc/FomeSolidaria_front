@@ -23,15 +23,15 @@ function App() {
         <AuthProvider>
           <BrowserRouter>
             <Routes>
-              <Route exact path="/" element={<SignIn />} />
-              <Route exact path="/main" element={<Main />} />
-              <Route exact path="/new-donee" element={<DoneeForm />} />
-              <Route exact path="/spouse/:id" element={<SpouseScreen />} />
-              <Route exact path="/donee/:id" element={<DoneeScreen />} />
-              <Route exact path="/donee/:id/history" element={<HistoryScreen />} />
-              <Route exact path="/donee/:id/new-donation" element={<DonationForm />} />
-              <Route exact path="/donee/:id/notes" element={<NotesScreen />} />
-              <Route exact path="/colleague/:id" element={<ColleagueScreen />} />
+              <Route path="/" element={<SignIn />} />
+              <Route path="/main" element={<Main />} />
+              <Route path="/new-donee" element={<DoneeForm />} />
+              <Route path="/spouse/:id" element={<SpouseScreen />} />
+              <Route path="/donee/:id" element={<DoneeScreen />} />
+              <Route path="/donee/:id/history" element={<HistoryScreen />} />
+              <Route path="/donee/:id/new-donation" element={<DonationForm />} />
+              <Route path="/donee/:id/notes" element={<NotesScreen />} />
+              <Route path="/colleague/:id" element={<ColleagueScreen />} />
             </Routes>
           </BrowserRouter>
           <Alert />
