@@ -75,9 +75,11 @@ export default function Step1(props: Props) {
           defaultValue={donationInfos.description}
         />
         <TextField
-          {...register('quantity')}
+          required
+          {...register('quantity', { required: 'Quantidade é necessária', min: 1 })}
           id="quantity"
           label="Quantidade"
+          helperText="Quantidade >= 1"
           type="number"
           defaultValue={donationInfos.quantity}
         />
