@@ -47,7 +47,7 @@ export default function Step4(props: Props) {
           <Typography variant="h5">{`Filho(a) ${i + 1}`}</Typography>
           <TextField
             required
-            {...register(`${i}.name`, { required: hasChildren ? 'Nome é necessário' : false })}
+            {...register(`${i}.name`, { required: hasChildren ? 'Nome é necessário' : false, min: 1 })}
             id="outlined-required"
             label="Nome completo"
             defaultValue={childrenInfos[i]?.name || ''}

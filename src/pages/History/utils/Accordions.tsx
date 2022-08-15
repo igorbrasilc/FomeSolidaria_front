@@ -19,10 +19,12 @@ export default function HistoryAccordion(props: HistoryProps) {
   const indexStart = page * maxItems - maxItems;
   const indexEnd = indexStart + maxItems;
 
+  console.log('donations', donations);
+
   if (!donations.length) {
     return (
-        <Typography variant="h5">Não há registros</Typography>
-    )
+      <Typography variant="h5">Não há registros</Typography>
+    );
   }
 
   const donationsToDisplay = donations.slice(indexStart, indexEnd);
@@ -34,7 +36,7 @@ export default function HistoryAccordion(props: HistoryProps) {
         aria-controls="panel1a-content"
         id="personal-data"
       >
-        <Typography color='black'>{`${dayjs(donation.created_at).format('DD/MM/YY')} - ${donation.category.category}`}</Typography>
+        <Typography color="black">{`${dayjs(donation.created_at).format('DD/MM/YY')} - ${donation.category.category}`}</Typography>
       </AccordionSummary>
       <AccordionDetails>
         <List sx={styles.list} dense>
@@ -48,6 +50,11 @@ export default function HistoryAccordion(props: HistoryProps) {
           <ListItem sx={styles.list.item}>
             <ListItemText
               primary={`${donation.description ? `Descrição: ${donation.description}` : 'Não há descrição'}`}
+            />
+          </ListItem>
+          <ListItem sx={styles.list.item}>
+            <ListItemText
+              primary={`Criado por ${donation.registration[0].admin.username}`}
             />
           </ListItem>
         </List>

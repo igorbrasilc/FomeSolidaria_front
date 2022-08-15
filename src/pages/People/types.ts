@@ -32,7 +32,17 @@ export interface DonationInfos {
     doneeId: number,
     categoryId: number,
     created_at: Date,
-    category: CategoryInfos
+    category: CategoryInfos,
+    registration: [
+        {
+            id: number,
+            adminId: number,
+            donationId: number,
+            admin: {
+                username: string
+            }
+        }
+    ]
 }
 
 export interface CategoryInfos {

@@ -47,7 +47,7 @@ export default function Step3(props: Props) {
           <Typography variant="h5">{`Colega ${i + 1}`}</Typography>
           <TextField
             required
-            {...register(`${i}.name`, { required: hasColleagues ? 'Nome é necessário' : false })}
+            {...register(`${i}.name`, { required: hasColleagues ? 'Nome é necessário' : false, min: 1 })}
             id="outlined-required"
             label="Nome completo"
             defaultValue={colleaguesInfos[i]?.name || ''}

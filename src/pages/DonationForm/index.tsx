@@ -32,7 +32,7 @@ export default function DonationForm() {
   const [openSideBar, setOpenSideBar] = React.useState(false);
   const [step, setStep] = React.useState(1);
   const [hasNote, setHasNote] = React.useState(false);
-  const [formData, setFormData] = React.useState<DoneeFormData>({
+  const [formData, setFormData] = React.useState<DonationFormData>({
     donation: {
       quantity: 1,
       description: null,
