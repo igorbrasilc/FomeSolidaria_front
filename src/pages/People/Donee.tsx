@@ -44,7 +44,6 @@ export default function DoneeScreen() {
     const promise: Promise<AxiosResponse<any, any>> = api.getDonee(Number(id), token);
     promise.then((response) => {
       setDoneeInfos(response.data.doneeInfos);
-      console.log('doneeInfos', response.data.doneeInfos);
       setLoading(false);
     })
       .catch((err) => {

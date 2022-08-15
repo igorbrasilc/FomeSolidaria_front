@@ -203,7 +203,7 @@ export function ChildDataAccordion(props: ChildDataProps) {
         <ListItem sx={styles.list.item} key={child.name}>
           <ListItemText
             primary={child.name}
-            secondary={`${child.birthdate} - Data de nascimento`}
+            secondary={child.birthdate ? `${dayjs(child.birthdate).format('DD/MM/YY')} - Data de nascimento` : 'Data de nascimento não cadastrada'}
           />
         </ListItem>
       </>
