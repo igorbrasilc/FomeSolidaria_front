@@ -8,7 +8,7 @@
 </p>
 
 <p align = "center">
-   <a href="https://github.com/igorbrasilc/FomeSolidaria_back">Back-end repository</a>
+   <a href="https://github.com/igorbrasilc/FomeSolidaria_back">Back-end repository</a> ||
    <a href="https://fome-solidaria.vercel.app/">Front-end deploy</a>
 </p>
 
